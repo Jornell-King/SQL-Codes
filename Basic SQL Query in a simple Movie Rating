@@ -1,0 +1,36 @@
+-- 1.a: To find the titles and length of films that starts with letters "S" and "T" which has a replacement rate of 15.99 to 20.99 limited by 20 rows with the longest running time.
+
+Select * From film 
+Where (title Like 'S%' Or title Like 'T%') 
+And (replacement_cost Between 15.99 And 20.99) 
+Order by Title ASC Limit 20;
+
+
+-- 1.b: To find the film ID's and titles with a running time less than 100 minutes which has a replacement costs greater than 15.99 with ratings G, PG and PG-13 in an Ascending order. 
+
+Select * From film 
+Where rating In ('G','PG','PG-13')
+And (replacement_cost > 15.99) And (length < 100)
+Order By title ASC;
+
+
+-- 2. SQL syntaxes failed. Why?
+
+Select * From film Where rating = G;
+-- The value has always have a quotation mark ('') whereas the table or column doesn't have which is why it failed when you don't put quotation mark to the value.
+
+
+Select customer_id From film;
+-- Category 'customer_id' cannot be found in 'film' table because it is found from a different table.
+
+
+-- 3.a: To find the specific discrepancy on a financial report with payment transaction ID #514. 
+
+Select * From payment Where customer_id = 514;
+
+
+-- 3.b: To provide the number of films rated "R"
+
+Select Count (rating) From film Where rating = 'R';
+
+Select * From film Where rating = 'R';
